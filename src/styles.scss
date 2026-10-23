@@ -1,0 +1,28 @@
+:root {
+  --cream: #f7f1e8;
+  --ivory: #fffcf7;
+  --blush: #e9cfc4;
+  --rose: #c9968a;
+  --nude: #d8b9a6;
+  --gold: #c6a15b;
+  --gold-light: #e8d3a2;
+  --ink: #3d2f2a;
+  --ink-soft: #7a6560;
+  --serif: 'Frank Ruhl Libre', 'Cormorant Garamond', serif;
+  --sans: 'Assistant', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

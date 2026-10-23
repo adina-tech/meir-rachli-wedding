@@ -1,0 +1,81 @@
+<div class="bg" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  @for (d of dust; track $index) {
+    <i class="dust"
+       [style.left.%]="d.left" [style.width.px]="d.size" [style.height.px]="d.size"
+       [style.animation-delay.s]="d.delay" [style.animation-duration.s]="d.duration"></i>
+  }
+</div>
+
+<main class="page">
+  <header class="intro reveal">
+    <p class="eyebrow">בס״ד</p>
+    <p class="lead">בשעה טובה ומוצלחת</p>
+  </header>
+
+  <section class="hero reveal" style="--d: .15s">
+    <div class="halo" aria-hidden="true"></div>
+    <figure class="frame">
+      <img src="couple-web.jpg" alt="מאיר ורחלי" width="2400" height="1600" fetchpriority="high" />
+      <div class="overlay"></div>
+      <div class="shine"></div>
+      @for (s of sparkles; track $index) {
+        <i class="sparkle"
+           [style.top.%]="s.top" [style.left.%]="s.left"
+           [style.width.px]="s.size" [style.height.px]="s.size"
+           [style.animation-delay.s]="s.delay" [style.animation-duration.s]="s.duration"></i>
+      }
+      <figcaption class="names">
+        <span>{{ groom }}</span>
+        <span class="amp">&amp;</span>
+        <span>{{ bride }}</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="date reveal" style="--d: .35s">
+    <p class="tagline">מתחתנים</p>
+    <div class="date-row">
+      <span class="heb">{{ hebrewDate }}</span>
+      <span class="divider" aria-hidden="true"></span>
+      <span class="greg">{{ gregorianDate }}</span>
+    </div>
+  </section>
+
+  @if (!done()) {
+    <section class="countdown reveal" style="--d: .55s" aria-label="ספירה לאחור לחתונה">
+      @for (u of units(); track u.label) {
+        <div class="cell">
+          <div class="num">
+            @for (v of [u.value]; track v) {
+              <span class="tick">{{ v }}</span>
+            }
+          </div>
+          <div class="label">{{ u.label }}</div>
+        </div>
+      }
+    </section>
+  } @else {
+    <section class="finale" aria-live="polite">
+      <p class="finale-title">מזל טוב!</p>
+      <p class="finale-text">
+        היום המיוחל הגיע — {{ groom }} ו{{ bride }} נכנסים לחופה.<br />
+        שתזכו לבנות בית נאמן בישראל, מלא אהבה ושמחה.
+      </p>
+      <button class="btn ghost" type="button" (click)="celebrate()">עוד קונפטי 🎉</button>
+    </section>
+  }
+
+  <blockquote class="verse reveal" style="--d: .75s">
+    ״קול ששון וקול שמחה, קול חתן וקול כלה״
+  </blockquote>
+
+  <div class="actions reveal" style="--d: .9s">
+    <a class="btn" [href]="calendarUrl" target="_blank" rel="noopener">הוספה ליומן</a>
+    <button class="btn ghost" type="button" (click)="share()">
+      {{ copied() ? 'הקישור הועתק ✓' : 'שיתוף עם המשפחה' }}
+    </button>
+  </div>
+
+  <footer class="foot">נשמח לשמוח יחד איתכם</footer>
+</main>
