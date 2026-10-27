@@ -267,7 +267,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  direction: ltr; // days on the left, seconds on the right
 }
+
+.cell { direction: rtl; }
 
 .cell {
   position: relative;
